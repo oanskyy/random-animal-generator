@@ -15,7 +15,7 @@ const dogButton = document.querySelector(".get-dog")
 // Add eventListeners on BTNs
 catButton.addEventListener("click", getCat)
 foxButton.addEventListener("click", getFox)
-dogButton.addEventListener("click", getCat)
+dogButton.addEventListener("click", getDog)
 
 //
 function getCat() {
@@ -30,10 +30,20 @@ function getCat() {
 
 function getFox() {
 	// return a PROMISE
-	fetch("https://aws.randomfox.ca/floof")
+	fetch("https://randomfox.ca/floof")
 		// then we take the PROMISE (response) and we convert it into sth that can be parsed by JS
 		.then(response => response.json())
 		.then(responseData => {
 			fox.innerHTML = `<img src="${responseData.image}" />`
+		})
+}
+
+function getDog() {
+	// return a PROMISE
+	fetch("https://random.dog/woof.json")
+		// then we take the PROMISE (response) and we convert it into sth that can be parsed by JS
+		.then(response => response.json())
+		.then(responseData => {
+			dog.innerHTML = `<img src="${responseData.url}" />`
 		})
 }
